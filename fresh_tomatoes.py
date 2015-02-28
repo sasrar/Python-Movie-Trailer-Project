@@ -20,10 +20,6 @@ main_page_head = '''
         .storyline {
             display: none;
             position: absolute;
-            color: white;
-            vertical-align: middle;
-            float: none;
-            margin-right:-4px;
         }
         #trailer .modal-dialog {
             margin-top: 200px;
@@ -68,9 +64,8 @@ main_page_head = '''
             var image= $(this).find('img'),
             caption= $(this).find( ".storyline" );
 
-            caption.width(image.width());
-            caption.height(image.height());
-            caption.fadeIn("fast"); 
+            caption.width($(this).width());
+            caption.fadeIn("fast");
         }).on('mouseleave', ".movie-tile", function() { 
              $(this).find( ".storyline" ).fadeOut("fast"); 
         });
@@ -139,11 +134,10 @@ main_page_content = '''
 # A single movie entry html template
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <div class=" text-center storyline">{storyline}</div>
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
-    <div>
-        {movie_actors}
+    <div class="storyline">
+        {storyline}
     </div>
 </div>
 '''
