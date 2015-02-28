@@ -62,9 +62,10 @@ main_page_head = '''
         //hover
         $(document).on('mouseenter', ".movie-tile", function() {
             var image= $(this).find('img'),
-            caption= $(this).find( ".storyline" );
+            caption= $(this).find( ".storyline");
+            divWidth = $(this).width();
 
-            caption.width($(this).width());
+            caption.width(divWidth);
             caption.fadeIn("fast");
         }).on('mouseleave', ".movie-tile", function() { 
              $(this).find( ".storyline" ).fadeOut("fast"); 
