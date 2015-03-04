@@ -3,6 +3,7 @@ import os
 import re
 
 # Styles and scripting for the page
+# adding javascript to display storyline when hovering over movie tiles
 main_page_head = '''
 <head>
     <meta charset="utf-8">
@@ -133,6 +134,7 @@ main_page_content = '''
 '''
 
 # A single movie entry html template
+# includes storyline that shows up when mouse hovers over movie tile
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
@@ -151,14 +153,12 @@ def create_movie_tiles_content(movies):
         youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
         youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
-        actors = movie.actors.split(',')
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id,
-            movie_actors=movie.actors,
             storyline=movie.storyline
         )
     return content

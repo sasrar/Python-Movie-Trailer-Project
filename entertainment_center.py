@@ -1,6 +1,7 @@
 import media
 import fresh_tomatoes
 
+# instantiating movies
 inception = media.Movie("Inception",
                         "A journey inside the mind and its ideas",
                         "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX640_SY720_.jpg",
@@ -31,6 +32,6 @@ kickass = media.Movie("Kick Ass",
                         "http://ia.media-imdb.com/images/M/MV5BMTMzNzEzMDYxM15BMl5BanBnXkFtZTcwMTc0NTMxMw@@._V1_SX640_SY720_.jpg",
                         "https://www.youtube.com/watch?v=mcKIMqRF5Gc",
                         "Aaron Taylor-Johnson, Nicolas Cage")
-
+# passing movies to fresh_tomatoes to create page
 movies = [inception,the_dark_knight,the_matrix,up,zombieland,kickass]
 fresh_tomatoes.open_movies_page(movies)
